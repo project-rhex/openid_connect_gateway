@@ -1,0 +1,12 @@
+host: localhost
+client_id: cf13aa43e60227dfce97e5cef362b5d9
+client_secret:  2f82266a6cc8a78721d003a2e665a7ce49fb14faf40500b32ed778217779347d
+additional_properties:
+  authorization_endpoint: "/authorizations/new"
+  user_info_endpoint:  "/user_info"
+  token_endpoint:  "/access_tokens"
+  check_id_endpoint: "/id_token"
+  issuer: "http://localhost:3001"
+  client_options:
+    scheme: "http"
+    port: 3001
