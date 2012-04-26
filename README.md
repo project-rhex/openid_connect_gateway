@@ -20,16 +20,27 @@ OpenID Connect idP configuration
 openid.yml file
 
 host: the idp host name
+
 client_id: the client id for the idp
+
 client_secret:  the clients idp secret
+
 additional_properties:   --- These properties override default values 
+
   authorization_endpoint:  the idp authroization endpoint
+  
   user_info_endpoint: the idp user_info endpoint
+  
   token_endpoint:  the idp token endpoint
+  
   check_id_endpoint: the idp check_id_ endpoint
+  
   issuer: the issuer info that will come back in the id_token_
+  
   client_options:  -- some additional options for the client connection to the idp
+  
     scheme:  the scheme in use at the idp   http, https
+    
     port:  the port that the idp is running on
 
 
