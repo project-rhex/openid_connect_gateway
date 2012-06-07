@@ -7,6 +7,47 @@ require 'warden'
 require 'warden_omniauth'
 require 'yaml'
 
+SESSION_KEY      = 'rack.session'
+class WardenOmniAuth
+def call(env)
+
+    request = Rack::Request.new(env)
+    prefix = OmniAuth::Configuration.instance.path_prefix
+    if request.path =~ /^#{prefix}\/(.+?)\/callback$/i
+      strategy_name = $1
+      strategy = Warden::Strategies._strategies.keys.detect{|k| k.to_s == "omni_#{strategy_name}"}
+
+      if !strategy
+        Rack::Response.new("Unknown Handler", 401).finish
+      else
+        # Warden needs to use a hashie for looking up scope
+        # and strategy names
+        session = env[SESSION_KEY]
+        scope = session[SCOPE_KEY]
+        if scope.nil? || scope.to_s.length < 100 # have to protect against symbols :(. need a hashie
+          args = [strategy]
+          args << {:scope => scope.to_sym} if scope
+          response = Rack::Response.new
+          if env['warden'].authenticate? *args
+            response.redirect(session["original_url"] || "/")
+            response.finish
+          else
+            auth_path = request.path.gsub(/\/callback$/, "")
+            response.redirect(auth_path)
+            response.finish
+          end
+        else
+          Rack::Response.new("Bad Session", 400).finish
+        end
+      end
+    else
+      @app.call(env)
+    end
+  end
+
+end
+
+
 Warden::Manager.serialize_into_session do |user|
   user
 end
@@ -26,8 +67,10 @@ app = lambda do |e|
     r.redirect("/")
     r.finish
   else
+    request = Rack::Request.new(e)
+    session = e[SESSION_KEY]
+	session["original_url"] = request.path
     e['warden'].authenticate!
-   
     Rack::Response.new(e['warden'].user.inspect).finish
   end
 end
@@ -78,7 +121,7 @@ use OmniAuth::Builder do
 end
 
 
-# Wrape the Omniauth stuff in a warden strategy so it's easy for warden to use it
+# Wrap the Omniauth stuff in a warden strategy so it's easy for warden to use it
 use WardenOmniAuth do |config|
   #config.redirect_after_callback = "/redirect/path" # default "/"
 end
