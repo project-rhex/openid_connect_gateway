@@ -1,3 +1,4 @@
+source "http://rubygems.org"
 gem "rack-reverse-proxy", :require => "rack/reverse_proxy", :git => "https://github.com/rdingwell/rack-reverse-proxy.git"
 gem 'omniauth_openid_connect', :git => "https://github.com/project-rhex/omniauth_openid_connect.git"
 gem 'pry'
