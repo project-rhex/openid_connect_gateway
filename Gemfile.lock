@@ -1,0 +1,110 @@
+GIT
+  remote: https://github.com/hassox/warden_omniauth.git
+  revision: 0e77084dc88cb0b932aa9637c6da6d502c55c934
+  specs:
+    warden_omniauth (0.1.0)
+      omniauth
+      warden (>= 0.9)
+
+GIT
+  remote: https://github.com/project-rhex/omniauth_openid_connect.git
+  revision: b12d89d5744b0fcf766b6e12e1fc6c2b2c4382df
+  specs:
+    omniauth_openid_connect (0.2.0)
+      omniauth (~> 1.0)
+      openid_connect (= 0.2.0.alpha3)
+      rack-oauth2
+
+GIT
+  remote: https://github.com/project-rhex/rack-reverse-proxy.git
+  revision: 3e5a4476516a44ce9bd27d67d121ff31249555e9
+  specs:
+    rack-reverse-proxy (0.4.4)
+      rack (>= 1.0.0)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    activemodel (3.2.8)
+      activesupport (= 3.2.8)
+      builder (~> 3.0.0)
+    activesupport (3.2.8)
+      i18n (~> 0.6)
+      multi_json (~> 1.0)
+    attr_required (0.0.5)
+    builder (3.0.4)
+    coderay (1.0.8)
+    hashie (1.2.0)
+    httpclient (2.3.0.1)
+    i18n (0.6.1)
+    json (1.7.5)
+    json-jwt (0.3.3)
+      activesupport (>= 2.3)
+      i18n
+      json (>= 1.4.3)
+      url_safe_base64
+    mail (2.4.4)
+      i18n (>= 0.4.0)
+      mime-types (~> 1.16)
+      treetop (~> 1.4.8)
+    method_source (0.8.1)
+    mime-types (1.19)
+    multi_json (1.3.7)
+    omniauth (1.1.1)
+      hashie (~> 1.2)
+      rack
+    openid_connect (0.2.0.alpha3)
+      activemodel (>= 3)
+      attr_required (>= 0.0.5)
+      json (>= 1.4.3)
+      json-jwt (>= 0.0.3)
+      rack-oauth2 (>= 0.14.2)
+      swd (>= 0.1.2)
+      tzinfo
+      validate_email
+      validate_url
+    polyglot (0.3.3)
+    pry (0.9.10)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.3.1)
+    pry-nav (0.2.2)
+      pry (~> 0.9.10)
+    rack (1.4.1)
+    rack-oauth2 (1.0.0)
+      activesupport (>= 2.3)
+      attr_required (>= 0.0.5)
+      httpclient (>= 2.2.0.2)
+      i18n
+      multi_json (>= 1.3.6)
+      rack (>= 1.1)
+    slop (3.3.3)
+    swd (0.2.1)
+      activesupport (>= 3)
+      attr_required (>= 0.0.5)
+      httpclient (>= 2.2.1)
+      i18n
+      json (>= 1.4.3)
+    treetop (1.4.12)
+      polyglot
+      polyglot (>= 0.3.1)
+    tzinfo (0.3.35)
+    url_safe_base64 (0.2.1)
+    validate_email (0.1.6)
+      activemodel (>= 3.0)
+      mail (>= 2.2.5)
+    validate_url (0.2.0)
+      activemodel (>= 3.0.0)
+    warden (1.2.1)
+      rack (>= 1.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  omniauth_openid_connect!
+  pry
+  pry-nav
+  rack-reverse-proxy!
+  warden
+  warden_omniauth!

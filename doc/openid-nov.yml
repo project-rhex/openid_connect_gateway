@@ -1,0 +1,17 @@
+# OpenID Connect Gateway configuration file
+# Sample for Nov's Rails sample Identity Provider
+# https://github.com/nov/openid_connect_sample
+
+host: localhost
+client_id: ce75d6f27dd9781d607d11be3509dd4b
+client_secret: 653eb3e72c087f485087f8b66b7269d1bf581f7236aa62e951c88f89cb0a8198
+additional_properties:
+  authorization_endpoint: "/authorizations/new"
+  user_info_endpoint:  "/user_info"
+  token_endpoint:  "/access_tokens"
+  check_id_endpoint: "/id_token"
+  x509_url: "/cert.pem"
+  issuer: "http://op.dev"
+  client_options:
+    scheme: "http"
+    port: 3000
