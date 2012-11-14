@@ -1,12 +1,30 @@
+# OpenID Connect Gateway configuration file
+# See the samples in the doc/ directory
+
+# host that the Identity Provider is running on
 host: localhost
-client_id: cf13aa43e60227dfce97e5cef362b5d9
-client_secret:  2f82266a6cc8a78721d003a2e665a7ce49fb14faf40500b32ed778217779347d
+
+# these two need to be configured in the Identity Provider and then
+# copied here
+client_id: ce75d6f27dd9781d607d11be3509dd4b
+client_secret: 653eb3e72c087f485087f8b66b7269d1bf581f7236aa62e951c88f89cb0a8198
+
 additional_properties:
-  authorization_endpoint: "/authorizations/new"
-  user_info_endpoint:  "/user_info"
-  token_endpoint:  "/access_tokens"
-  check_id_endpoint: "/id_token"
-  issuer: "http://localhost:3001"
+  # if you don't know these, try going to
+  # http://{host}/simpledb-openid-connect-server/.well-known/openid-configuration
+  # this is a "magic" URL for most Identity Providers that will
+  # return some configuration information, including many of the
+  # server's endpoints
+  authorization_endpoint: "/simpledb-openid-connect-server/authorize"
+  user_info_endpoint:  "/simpledb-openid-connect-server/userinfo?schema=openid"
+  token_endpoint:  "/simpledb-openid-connect-server/token"
+  check_id_endpoint: "/simpledb-openid-connect-server/id_token"
+  jwk_url: "/simpledb-openid-connect-server/jwk"
+
+  # this what the identity provider uses to identify itself
+  issuer: "http://localhost/"
+
+  # these are used to connect to the identity provider
   client_options:
     scheme: "http"
-    port: 3001
+    port: 8080
