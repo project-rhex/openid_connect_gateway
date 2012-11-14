@@ -15,6 +15,8 @@ Clone the git repository and run bundle install
 Configuration 
 ----------------
 
+There are sample openid.yml files in the doc/ directory.
+
 OpenID Connect idP configuration 
 
 openid.yml file

@@ -1,0 +1,17 @@
+# OpenID Connect Gateway configuration file
+# Sample for the MITRE simple-user-repository Identity Provider
+# https://github.com/project-rhex/simple-user-repository
+
+host: localhost
+client_id: ce75d6f27dd9781d607d11be3509dd4b
+client_secret: 653eb3e72c087f485087f8b66b7269d1bf581f7236aa62e951c88f89cb0a8198
+additional_properties:
+  authorization_endpoint: "/simpledb-openid-connect-server/authorize"
+  user_info_endpoint:  "/simpledb-openid-connect-server/userinfo"
+  token_endpoint:  "/simpledb-openid-connect-server/token"
+  check_id_endpoint: "/simpledb-openid-connect-server/id_token"
+  jwk_url: "/simpledb-openid-connect-server/jwk"
+  issuer: "http://localhost/"
+  client_options:
+    scheme: "http"
+    port: 8080
